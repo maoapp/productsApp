@@ -1,28 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
+import Products from './components/product/Product';
+import Home from './components/home/Home';
+import Clients from './components/clients/Clients';
+import Contact from './components/contact/Contact';
+import Nav from './components/nav/Nav';
+
+import AppReducer from './reducers';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const store = createStore(AppReducer, applyMiddleware(thunk));
+
+const App = () =>
+  (
+    <Provider store={store}>
+      <Router>
+        <main>
+          <Nav />
+          <section>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/products" component={Products} />
+            <Route exact path="/products/:category" component={Products} />
+            <Route exact path="/clients" component={Clients} />
+            <Route exact path="/contacts" component={Contact} />
+          </section>
+        </main>
+      </Router>
+    </Provider>
+  );
+
 
 export default App;
+
+
+
+
+    

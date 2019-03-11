@@ -1,0 +1,4 @@
+server/*.js
+src/registerServiceWorker.js
+src/store/*.js
+*.test.js
