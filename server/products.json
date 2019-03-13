@@ -1,4 +1,4 @@
-const response = [
+[
   {
     "id":"c9a5c012-6295-48d5-a103-68ca76ff047b",
     "name":"Intelligent Concrete Computer",
@@ -318,7 +318,10 @@ const response = [
     "brand":"Purdy - Leffler",
     "stock":12576,
     "photo":"http://lorempixel.com/640/480/transport",
-    "categories":["Services"]},{"id":"a19a51b7-287b-4199-8398-f309511d62b1",
+    "categories":["Services"]
+  },
+  {
+    "id":"a19a51b7-287b-4199-8398-f309511d62b1",
     "name":"Rustic Fresh Salad",
     "description":"Facere reiciendis modi nihil voluptas nesciunt et est magni. Quia autem aut nulla necessitatibus architecto corrupti cupiditate voluptatem. Enim voluptas est.",
     "price":"412.00",
@@ -338,5 +341,3 @@ const response = [
     ,"categories":["Tech","Services"]
   }
 ]
-
-module.exports = response;

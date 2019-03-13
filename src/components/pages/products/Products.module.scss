@@ -1,0 +1,40 @@
+.Products__mainSection {
+  margin-left: 256px;
+  margin-top: 50px;
+  padding: 0;
+
+  header {
+    padding: 1em;
+  }
+}
+
+.Products__toolbar {
+  padding: 1em 0;
+
+  div {
+    display: inline-block;
+
+    i {
+      cursor: pointer;
+      font-size: 15px;
+      margin-right: 2em;
+    }
+  }
+}
+
+.Product__input__search {
+  float: right;
+  padding-right: 1em;
+  hr {
+    margin: 3px
+  }
+  input {
+    margin: 3px;
+  }
+}
+
+.Product__list {
+  height: calc(100vh - 160px);
+  overflow-y: scroll;
+  padding: 1em;
+}

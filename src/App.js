@@ -7,14 +7,14 @@ import {
   Route
 } from 'react-router-dom';
 
-import Products from './components/product/Product';
+import Products from './containers/products/Products';
 import Home from './components/home/Home';
 import Clients from './components/clients/Clients';
 import Contact from './components/contact/Contact';
 import Nav from './components/nav/Nav';
 
 import AppReducer from './reducers';
-import './App.css';
+import styles from './App.modules.scss';
 
 const store = createStore(AppReducer, applyMiddleware(thunk));
 
@@ -24,7 +24,7 @@ const App = () =>
       <Router>
         <main>
           <Nav />
-          <section>
+          <section className={styles.Main__section}>
             <Route exact path="/" component={Home} />
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/:category" component={Products} />

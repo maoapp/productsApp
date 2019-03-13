@@ -4,7 +4,9 @@ import {
   GET_PRODUCTS_FAILURE,
 } from '../constants/actionTypes';
 
-import axios from 'axios'
+import { ALL_CATEGORIES } from '../constants/constants';
+
+import axios from 'axios';
 import { API_URL } from '../constants/constants';
 
 const getProductsRequest = () => ({
@@ -25,8 +27,8 @@ const getProductsFailure = () => (
   }
 )
 
-const fetchProducts = () => dispatch => {
-  const url = `${API_URL}/products`;
+const fetchProducts = (category = ALL_CATEGORIES) => dispatch => {
+  const url = `${API_URL}/products/${category}`;
   dispatch(getProductsRequest());
   axios.get(
     url

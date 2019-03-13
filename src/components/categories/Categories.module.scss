@@ -1,0 +1,37 @@
+.Category__nav {
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  bottom: 0;
+  position: fixed;
+  top: 50px;
+  z-index: 17;
+  left: 0;
+  max-width: 400px;
+  width: 256px;
+
+  h4 {
+    padding: 1em;
+    border-bottom: 1px solid #d2caca;
+  }
+}
+
+
+.Category__list {
+  text-decoration: none;
+  color: black;
+
+  i {
+    background: #d2caca;
+    margin-right: 1em;
+    border-radius: 50%;
+    padding: .6em;
+  }
+
+  li {
+    padding: 1em;
+  }
+}
+
+.Category__list__active {
+  background: rgb(107, 103, 103);
+}
