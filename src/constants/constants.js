@@ -15,6 +15,8 @@ module.exports = {
 	INPUT_PLACEHOLDER_SEARCH: 'search',
 	MAX_LENGTH_INPUT_DEFAULT: 255,
 	MAX_LENGTH_SUBJECT_FIELD: 500,
+	PAGINATION_NUMBER: 10,
+	TIMEOUT_SCROLL: 500,
 	VALIDATION_MESSAGE_INPUT_DEFAULT: 'Please write down your',
 	VALIDATION_MESSAGE_INPUT_EMAIL: 'Don’t forget to tell us what your email address is',
 	VALIDATION_MESSAGE_INPUT_SUBJECT: 'Don’t forget to write something to use!'

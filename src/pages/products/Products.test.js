@@ -14,7 +14,7 @@ describe('Product page tests', () => {
 		isFetching: false,
 		products,
 		success: false,
-		match: {},
+		match: { params: {}},
 		fetchProducts: mockFunctionFecthProducts
 	};
   

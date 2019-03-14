@@ -6,9 +6,11 @@ import { CircularProgress } from 'react-md';
 // @constants
 import { 
 	ALL_CATEGORIES, 
-	INPUT_PLACEHOLDER_SEARCH,
 	EMPTY_STATE_CATEGORIES,
-	ERROR_404
+	ERROR_404,
+	INPUT_PLACEHOLDER_SEARCH,
+	PAGINATION_NUMBER,
+	TIMEOUT_SCROLL
 } from '../../constants/constants';
 
 // @utils
@@ -30,30 +32,48 @@ class Products extends React.Component {
 		this.state = {
 			searchValue: '',
 			displayList: true,
-			products: props.products
+			products: props.products,
+			items: PAGINATION_NUMBER
 		};
 
 		this.buildCategories = this.buildCategories.bind(this);
 		this.buildProducts = this.buildProducts.bind(this);
+		this.getScrollBottom = this.getScrollBottom.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleDisplayType = this.handleDisplayType.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 		this.renderContent = this.renderContent.bind(this);
+		this.resetScroll = this.resetScroll.bind(this);
 	}
 
 	componentDidMount() {
 		const { fetchProducts } = this.props;
-        
+		window.addEventListener('scroll', this.handleScroll);
+
 		fetchProducts();
+	}
+    
+	componentWillReceiveProps(nextProps) {
+		const { match } = this.props;
+		const { params } = match;
+		const previewCategory = params.category || ALL_CATEGORIES;
+		const { match: currentMatch } = nextProps;
+		const { params: currentParams } = currentMatch;
+		const currentCategory = currentParams.category || ALL_CATEGORIES;
+
+		if (previewCategory !== currentCategory) {
+			this.resetScroll();
+		}
+	}
+    
+	handleChange(event) {
+		this.setState({searchValue: event.target.value});
 	}
 
 	handleDisplayType(displayList) {
 		this.setState({ displayList });
 	}
 
-	handleChange(event) {
-		this.setState({searchValue: event.target.value});
-	}
-  
 	buildCategories() {
 		const { products } = this.props;
 		const categoriesArrays = products.map(product => product.categories).join(',').split(',');
@@ -62,15 +82,34 @@ class Products extends React.Component {
 			(item, index) => categoriesArrays.indexOf(item) === index
 		).sort().reverse();	
 	}
-  
+    
+	handleScroll () {
+		const { products } = this.props;
+		const { items } = this.state;
+		const isBottomOfScroll = this.getScrollBottom() && products.length > items;
+        
+		if(isBottomOfScroll) {
+			setTimeout(() => this.setState(prevstate => ({ items: prevstate.items + PAGINATION_NUMBER})), TIMEOUT_SCROLL); 
+		}
+	}
+    
 	buildProducts(activeCategory) {
 		const { products } = this.props;
 		const category = firstLetterUpperCase(activeCategory);
 
 		return activeCategory === ALL_CATEGORIES ? products : products.filter(product => product.categories.includes(category));
 	}
+    
+	getScrollBottom() {
+		return (window.innerHeight + window.scrollY >= document.body.offsetHeight);
+	}
+    
+	resetScroll() {
+		window.scrollTo(0,0); 
+		this.setState({items: 10});
+	}
   
-	renderContent(activeCategory, categories, productsToShow, productList) {
+	renderContent(activeCategory, categories, items, productsToShow, productList) {
 		const { displayList, searchValue } = this.state;
 		const { products } = this.props;
 		const totalProducts = products.length - productsToShow.length;
@@ -116,9 +155,12 @@ class Products extends React.Component {
 						</div>
 					</header>
 					<section className="md-grid">
-						{productList}
+						{productList.slice(0, items)}
 					</section>
 				</main> : <EmptyState customMessage={messageEmptyStateCategories} state={ERROR_404}/>}
+				{this.getScrollBottom() && products.length > items && <div>
+					<CircularProgress id="circularProgressScroll" scale={2} />
+				</div>}
 			</section>
 		);
 	}
@@ -126,7 +168,7 @@ class Products extends React.Component {
 	render() {
 		const { isFetching, match, products } = this.props;
 		const { params } = match || '';
-		const { displayList, searchValue } = this.state; 
+		const { displayList, items, searchValue } = this.state; 
 		let activeCategory;
 		let categories;
 		let content;
@@ -147,7 +189,7 @@ class Products extends React.Component {
 				productsToShow.map(product => <ProductCard displayList={displayList} key={product.id} {...product} />)
 			);
       
-			content = this.renderContent(activeCategory, categories, productsToShow, productList);
+			content = this.renderContent(activeCategory, categories, items, productsToShow, productList);
 		} else {
 			content = isFetching ? <CircularProgress id="circularProgress" scale={2} /> : <Error/>;
 		}
