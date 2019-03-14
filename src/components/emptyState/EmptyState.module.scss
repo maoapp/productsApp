@@ -1,0 +1,19 @@
+@import '../../globals';
+
+.emptyState {
+    left: 40%;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+
+    &__state {
+        color: $gray-black-header;
+        font-size: 100px;
+    }
+
+    &__message {
+        color: $gray-black-dark-bold;
+        font-size: 60px;
+        margin-top: 50px;
+    }
+}

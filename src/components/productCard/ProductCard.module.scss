@@ -1,0 +1,70 @@
+//Default inherance styles
+.card__containerBodyDefault {
+    align-items: flex-start;
+    display: flex;
+    padding: 0px 16px 50px;
+}
+        
+.card__imgContainerDefault {
+    display: inline-block;
+    height: 0;
+    position: relative;
+}
+ 
+//components styles
+.card__containerList {
+    .card__containerBody {
+        @extend .card__containerBodyDefault;
+        justify-content: flex-end;
+    }     
+    .card__imageContainer {
+        @extend .card__imgContainerDefault;
+        padding-top: 10%;
+        width: 10%;
+    }
+    .card__containerText {
+        display: inline-block;
+        margin-left: 10%;
+        width: 70%;
+    }
+}
+
+.card__containerColumns {
+    max-height: 300px;
+
+    .card__containerBody {
+        @extend .card__containerBodyDefault;
+    }
+        
+    .card__imageContainer{
+        @extend .card__imgContainerDefault;
+        padding-top: 23%;
+        width: 23%;
+    }
+        
+    .card__containerText {
+        display: inline-block;
+        margin-left: 20px;
+        width: 68%;
+    }     
+}
+    
+.card__containerTextParagraph {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+    
+.card__containerDescriptionParagraph {
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+.card__image {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}

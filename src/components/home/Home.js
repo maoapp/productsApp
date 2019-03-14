@@ -1,12 +1,15 @@
+// @vendors
 import React from 'react';
+
+// @styles
 import styles from './Home.module.scss';
 
 const Home = () => (
-  <div className={styles.Home_container}>
-    <h1>
+	<div className={styles['homeContainer']}>
+		<h1>
       Home
-    </h1>
-  </div>
+		</h1>
+	</div>
 );
 
 export default Home;

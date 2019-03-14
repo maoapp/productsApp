@@ -1,0 +1,22 @@
+@import './../../globals';
+
+.form {
+    align-items: center;
+    display: flex;
+    height: calc(100vh - 80px);
+    justify-content: center;
+    width: 100%;
+
+    &__button {
+        float: right;
+        margin-right: 8px;
+    }
+}
+    
+.formContainer {
+    flex-wrap: wrap;
+    border: 1px solid $gray-black-header;
+    border-radius: 8px;
+    width: 40%;
+    padding: 30px 40px 25px;
+}

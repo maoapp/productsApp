@@ -17,7 +17,9 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-mock-store": "^1.5.3",
+    "redux-thunk": "^2.3.0",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./node_modules src/ -o src/",
@@ -27,7 +29,8 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:server": "cd server && yarn start"
+    "start:server": "cd server && yarn start",
+    "coverage": "react-scripts test --env=jsdom --coverage && open ./coverage/lcov-report/index.html"
   },
   "eslintConfig": {
     "extends": "react-app"

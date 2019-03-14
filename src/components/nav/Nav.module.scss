@@ -1,0 +1,28 @@
+@import '../../globals';
+
+.Header__nav {
+    background-color: #c8c8c8;
+    display: flex;
+    justify-content: center;
+    height: 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    a {
+        color: $gray-black-dark-bold;
+        font-family: roboto;
+        font-weight: 700;
+        padding: 12px 30px;
+        text-decoration: none;
+        
+        &:hover {
+        background: $gray-black-header;
+        }
+    }
+}
+
+.Header__nav--activate {
+    background: $gray-black-header;
+}

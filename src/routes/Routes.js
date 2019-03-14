@@ -1,34 +1,46 @@
-import Products from '../components/product/Product';
-import Clients from '../components/clients/Clients';
-import Home from '../components/home/Home';
-import Contact from '../components/contact/Contact';
+// @vendors
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import {
+	Switch, BrowserRouter as Router,
+	Route
+} from 'react-router-dom';
 
-const Routes = [
-  {
-      path: "/home",
-      component: Home
-  },
-  {
-      path: "/contact",
-      component: Contact
-  },
-  {
-      path: "/client",
-      component: Clients
-  },
-  {
-      path: "/products",
-      exact: true,
-      component: Products,
-  },
-  {
-      path: "/products/:productCategory",
-      component: Products,
-  },
-  {
-      path: "/:wrongRoute",
-      component: WrongRoute
-  }
-];
+// @Components
+import AppReducer from './../reducers';
+import Products from './../containers/products/Products';
+import Home from './../components/home/Home';
+import Clients from './../components/clients/Clients';
+import Contact from './../containers/contact/Contact';
+import Nav from './../components/nav/Nav';
+import Error from './../components/error/Error';
 
-export default Routes;
+// @styles
+import styles from './../App.module.scss';
+
+const store = createStore(AppReducer, applyMiddleware(thunk));
+
+const App = () =>
+	(
+		<Provider store={store}>
+			<Router>
+				<main>
+					<Nav />
+					<section className={styles.Main__section}>
+						<Switch>
+							<Route exact path="/home" component={Home} />
+							<Route exact path="/products" component={Products} />
+							<Route exact path="/products/:category" component={Products} />
+							<Route exact path="/clients" component={Clients} />
+							<Route exact path="/contact" component={Contact} />
+							<Route component={Error} />
+						</Switch>
+					</section>
+				</main>
+			</Router>
+		</Provider>
+	);
+
+export default App;

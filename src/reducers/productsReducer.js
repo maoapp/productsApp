@@ -1,37 +1,37 @@
 import {
-  GET_PRODUCTS_REQUEST,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_FAILURE,
+	GET_PRODUCTS_REQUEST,
+	GET_PRODUCTS_SUCCESS,
+	GET_PRODUCTS_FAILURE,
 } from '../constants/actionTypes';
 
 const initialState = {
-  error: false,
-  success: false,
-  isFetching: false,
-  products: [],
+	error: false,
+	success: false,
+	isFetching: false,
+	products: [],
 };
 
-function products(state = initialState, action) {
-  switch (action.type) {
-    case GET_PRODUCTS_REQUEST:
-      return {...state, isFetching: true};
-    case GET_PRODUCTS_SUCCESS:
-      return {
-        ...state,
-        success: true,
-        isFetching: false,
-        products: action.payload
-      };
-    case GET_PRODUCTS_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        success: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-}
+const productsReducer = (state = initialState, action) => {
+	switch (action.type) {
+	case GET_PRODUCTS_REQUEST:
+		return {...state, isFetching: true};
+	case GET_PRODUCTS_SUCCESS:
+		return {
+			...state,
+			success: true,
+			isFetching: false,
+			products: action.payload
+		};
+	case GET_PRODUCTS_FAILURE:
+		return {
+			...state,
+			isFetching: false,
+			success: false,
+			error: true
+		};
+	default:
+		return state;
+	}
+};
 
-export default products
+export default productsReducer;

@@ -1,5 +1,14 @@
-@import '../node_modules/react-md/src/scss/react-md';
+@import 'node_modules/react-md/src/scss/react-md';
+
+$gray-black-header: #8b8b8b;
+$gray-black-light: #969696;
+$gray-black-dark-bold: #343434;
+$gray-ligh-active: #e0e0e0;
+$gray-light-border: #ebebeb;
+$gray-light-color: #c8c8c8;
+$white-color: #eff1ee;
+$gray-light-dark: #616161;
 
 // Any variable overrides. The following just changes the default theme to use teal and purple.
-$md-primary-color: $md-teal-500;
-$md-secondary-color: $md-purple-a-400;
+$md-primary-color: $gray-light-dark;
+$md-secondary-color: $gray-black-light;

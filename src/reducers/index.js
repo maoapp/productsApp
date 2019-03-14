@@ -1,11 +1,11 @@
 // @Vendors
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-// reducers
+// @reducers
 import productsReducer from './productsReducer';
 
 const AppReducer = combineReducers({
-  productsReducer
-})
+	productsReducer
+});
 
-export default AppReducer
+export default AppReducer;

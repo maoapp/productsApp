@@ -1,29 +1,44 @@
+// @vendors
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// @constants
 import { ALL_CATEGORIES } from '../../constants/constants';
 
-import globalStyles from '../../assets//scss/index.module.scss';
+// @styles
 import styles from './Categories.module.scss';
 
-const categoryList = (categories, active) => {
-  return (
-    categories.map(category => 
-      <Link className={styles.Category__list} key={category} to={category.toLowerCase() === ALL_CATEGORIES ? '/products' : `/products/${category.toLowerCase()}`}>
-        <li className={active ? styles.Category__list__active : ''}>
-          {category}
-        </li>
-      </Link>
-    )
-  )
-}
+const categoriesIcon = {
+	tech: 'computer',
+	services: 'build',
+	office: 'folder',
+	all: 'list'
+};
 
-const Categories = ({categories, activeCategory}) => (
-  <nav className={styles.Category__nav}>
-    <h4>Categories</h4>
-    <ul className={`${globalStyles['md-list']} ${globalStyles['md-list--drawer']}`}>
-      {categoryList(categories, activeCategory)}
-    </ul>
-  </nav>
-)
+const categoryList = (categories, active) => {
+	return (
+		categories.map(category => {
+			const categoryLowerCase = category.toLowerCase();
+			const route = category.toLowerCase() === ALL_CATEGORIES ? '/products' : `/products/${categoryLowerCase}`;
+
+			return(
+				<Link className={active === categoryLowerCase ? styles['Category__list--active'] : styles['Category__list']} key={category} to={route}>
+					<i className={`${styles.navLinkCategories__icon} material-icons`}>
+						{categoriesIcon[categoryLowerCase]}
+					</i>
+					{category}
+				</Link>
+			);
+		}));
+};
+
+const Categories = ({categories, active}) => (
+	<nav className={styles['Category__nav']}>
+		<h4>Categories</h4>
+		<section className={styles['Category__section']}>
+			{categoryList(categories, active)}
+		</section>
+	</nav>
+);
 
 export default Categories;

@@ -1,37 +1,77 @@
+@import '../../globals';
+
 .Category__nav {
-  background: white;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  bottom: 0;
-  position: fixed;
-  top: 50px;
-  z-index: 17;
-  left: 0;
-  max-width: 400px;
-  width: 256px;
-
-  h4 {
-    padding: 1em;
-    border-bottom: 1px solid #d2caca;
-  }
+    padding-top: 50px;
+    
+    h4 {
+        color: $gray-black-light;
+        padding: 1em;
+    }
 }
-
 
 .Category__list {
-  text-decoration: none;
-  color: black;
+    color: black;
+    font-weight: bold;
+    font-family: Roboto;
+    display: block;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    
+    &:after {
+        content: '';
+        left: 0;
+        position: absolute;
+        text-decoration: none;
+        top: calc(100% + 10px);
+        width: 100%;
+    }
 
-  i {
-    background: #d2caca;
-    margin-right: 1em;
-    border-radius: 50%;
-    padding: .6em;
-  }
+    &:first-child {
+        border-bottom: 2.5px solid $gray-light-border;
+        padding-bottom: 20px;
+    }
 
-  li {
-    padding: 1em;
-  }
-}
+    i {
+        background: $gray-light-dark;
+        border-radius: 50%;
+        color:  $white-color;
+        font-size: 19px;
+        margin-right: 20px;
+        padding: 12px;
+    }
 
-.Category__list__active {
-  background: rgb(107, 103, 103);
+    &--active  {
+        background: $gray-ligh-active;
+        color: $gray-black-dark-bold;
+        display: block;
+        font-weight: bold;
+        font-family: Roboto;
+        margin-bottom: 8px;
+        padding-left: 20px;
+        text-decoration: none;
+        
+        &:after {
+            content: '';
+            left: 0;
+            position: absolute;
+            text-decoration: none;
+            top: calc(100% + 10px);
+            width: 100%;
+        }
+    
+        &:first-child {
+            border-bottom: 2.5px solid $gray-light-border;
+            padding-bottom: 20px;
+        }
+    
+        i {
+            background: $gray-light-dark;
+            border-radius: 50%;
+            color:  $white-color;
+            font-size: 18px;
+            padding: 12px;
+            margin-right: 20px;
+        }
+    }
 }
