@@ -19,9 +19,9 @@ app.get('/products', (req, res) => {
 app.post('/contact', function (req, res) {
 	const { firstName, lastName } = req.body;
 
-	setTimeout(() => {
-		res.send({ message: `Welcome ${firstName} ${lastName}, Your message have been sent` });
-	}, 1500);
+	// eslint-disable-next-line no-console
+	console.log(`Welcome ${firstName} ${lastName}, Your message have been sent`);
 });
 
+// eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Listening on port ${port}`));
