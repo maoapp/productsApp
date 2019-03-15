@@ -1,3 +1,4 @@
+//@actiontypes
 import {
 	GET_PRODUCTS_REQUEST,
 	GET_PRODUCTS_SUCCESS,

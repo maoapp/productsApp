@@ -18,7 +18,7 @@ import Nav from './../components/nav/Nav';
 import Error from './../components/error/Error';
 
 // @styles
-import styles from './../App.module.scss';
+import styles from './../styles/App.module.scss';
 
 const store = createStore(AppReducer, applyMiddleware(thunk));
 

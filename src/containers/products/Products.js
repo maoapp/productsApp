@@ -1,8 +1,11 @@
+// @vendors
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+//@actions
 import * as Actions from '../../actions/products';
 
+//@components
 import Products from '../../pages/products/Products';
 
 const mapStateToProps = ({ productsReducer }) => {

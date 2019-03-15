@@ -27,7 +27,7 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:server": "cd server && yarn start",
+    "server": "cd server && yarn start",
     "coverage": "react-scripts test --env=jsdom --coverage && open ./coverage/lcov-report/index.html",
     "install": "cd server && npm i"
   },

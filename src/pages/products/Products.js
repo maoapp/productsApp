@@ -117,55 +117,57 @@ class Products extends React.Component {
 		const messageEmptyStateCategories = EMPTY_STATE_CATEGORIES.replace('{category}', activeCategory);
 
 		return(
-			<section>
-				<aside className={styles['products__categorySection']}>
-					<Categories active={activeCategory} categories={[firstLetterUpperCase(ALL_CATEGORIES), ...categories]} />
-				</aside>
-				{showProductsSection ? <main className={styles['products__mainSection']}>
-					<header>
-						<div className={styles['products__toolbar']}>
-							<div className={styles['products__viewControls']}>
-								<i
-									onClick={() => this.handleDisplayType(true)}
-									className={`${!displayList && styles['products__viewControls--iconInactive']} material-icons`}
-								>
+			<React.Fragment>
+				{showProductsSection ? <section>
+					<aside className={styles['products__categorySection']}>
+						<Categories active={activeCategory} categories={[firstLetterUpperCase(ALL_CATEGORIES), ...categories]} />
+					</aside>
+					<main className={styles['products__mainSection']}>
+						<header>
+							<div className={styles['products__toolbar']}>
+								<div className={styles['products__viewControls']}>
+									<i
+										onClick={() => this.handleDisplayType(true)}
+										className={`${!displayList && styles['products__viewControls--iconInactive']} material-icons`}
+									>
                                     view_list
-								</i>
-								<i
-									onClick={() => this.handleDisplayType(false)}
-									className={`${displayList && styles['products__viewControls--iconInactive']} material-icons`}
-								>
+									</i>
+									<i
+										onClick={() => this.handleDisplayType(false)}
+										className={`${displayList && styles['products__viewControls--iconInactive']} material-icons`}
+									>
                                     view_module
-								</i>
+									</i>
+								</div>
+								<div className={styles['products__searchInputContainer']}>
+									<input 
+										type="text" 
+										value={searchValue} 
+										onChange={this.handleChange} 
+										className={styles['products__searchInput']}
+										placeholder={INPUT_PLACEHOLDER_SEARCH}
+									/>
+								</div>
 							</div>
-							<div className={styles['products__searchInputContainer']}>
-								<input 
-									type="text" 
-									value={searchValue} 
-									onChange={this.handleChange} 
-									className={styles['products__searchInput']}
-									placeholder={INPUT_PLACEHOLDER_SEARCH}
-								/>
-							</div>
-						</div>
-						<div>
-							<span>Showing <strong>{productsToShow.length} </strong></span> 
-							{
-								products.length !== productsToShow.length && 
+							<div>
+								<span>Showing <strong>{productsToShow.length} </strong></span> 
+								{
+									products.length !== productsToShow.length && 
                                     <span> 
                                         products - Hidden <strong>{totalProducts}</strong>
                                     </span>
-							}
-						</div>
-					</header>
-					<section className="md-grid">
-						{productList.slice(0, items)}
-					</section>
-					{this.getScrollBottom() && productsToShow.length > items && productsToShow.length > 10 && <div>
-						<CircularProgress style={{fill: 'red'}}id="circularProgressScroll" scale={1} />
-					</div>}
-				</main> : <EmptyState customMessage={messageEmptyStateCategories} state={ERROR_404}/>}
-			</section>
+								}
+							</div>
+						</header>
+						<section className="md-grid">
+							{productList.slice(0, items)}
+						</section>
+						{this.getScrollBottom() && productsToShow.length > items && productsToShow.length > 10 && <div>
+							<CircularProgress style={{fill: 'red'}}id="circularProgressScroll" scale={1} />
+						</div>}
+					</main> 
+				</section> : <EmptyState customMessage={messageEmptyStateCategories} state={ERROR_404}/>}
+			</React.Fragment>
 		);
 	}
 
