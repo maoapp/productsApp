@@ -23,6 +23,6 @@ describe('Categories tests', () => {
 		wrapper.setProps({active: 'tech'});
 		const link = wrapper.find('Link').first();
 
-		expect(link.props().className).toBe('Category__list--active');
+		expect(link.props().className).toBe('category__list--active');
 	});
 });

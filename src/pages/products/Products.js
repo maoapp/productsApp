@@ -89,8 +89,6 @@ class Products extends React.Component {
 		const isBottomOfScroll = this.getScrollBottom() && products.length > items;
         
 		if(isBottomOfScroll) {
-			console.log('entra aqui');
-
 			setTimeout(() => this.setState(prevstate => ({ items: prevstate.items + PAGINATION_NUMBER})), TIMEOUT_SCROLL); 
 		}
 	}
@@ -163,7 +161,7 @@ class Products extends React.Component {
 					<section className="md-grid">
 						{productList.slice(0, items)}
 					</section>
-					{this.getScrollBottom() && products.length > items && productsToShow.length > 10 && <div>
+					{this.getScrollBottom() && productsToShow.length > items && productsToShow.length > 10 && <div>
 						<CircularProgress style={{fill: 'red'}}id="circularProgressScroll" scale={1} />
 					</div>}
 				</main> : <EmptyState customMessage={messageEmptyStateCategories} state={ERROR_404}/>}

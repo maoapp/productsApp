@@ -2,7 +2,7 @@ module.exports = {
 	API_URL: 'http://localhost:8080',
 	API_REQUEST_MAX_TIME: 30000,
 	ALL_CATEGORIES: 'all',
-	EMPTY_STATE_CATEGORIES: '{category} not match with any product',
+	EMPTY_STATE_CATEGORIES: 'category {category} wrong',
 	EMPTY_STATE_FILTER_BY_NAME: 'This {name} not match with any product',
 	ENDPOINTS: {
 		PRODUCTS: 'products',

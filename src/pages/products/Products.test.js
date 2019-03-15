@@ -19,8 +19,8 @@ describe('Product page tests', () => {
 		success: false,
 		match: { params: {}},
 		fetchProducts: mockFunctionFecthProducts
-	};
-  
+    };
+    
 	it('Should render categories with all products', () => {
 		const wrapper = shallow(<Products {...props} />);
 		const categories = wrapper.find('Categories');
