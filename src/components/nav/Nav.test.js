@@ -1,6 +1,8 @@
+// @vendors
 import React from 'react';
 import { shallow } from 'enzyme';
 
+// @components
 import Nav from './Nav';
 
 describe('Nav tests', () => {

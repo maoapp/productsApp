@@ -1,9 +1,12 @@
+// @vendors
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Products from './Products';
-
+// @constants
 import { ALL_CATEGORIES } from '../../constants/constants';
+
+// @components
+import Products from './Products';
 
 const products = require('./../../test/mockData/products.json');
 const mockFunctionFecthProducts = jest.fn();

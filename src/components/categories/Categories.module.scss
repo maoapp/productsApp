@@ -1,77 +1,75 @@
 @import '../../globals';
 
-.Category__nav {
+// inherance classes
+.categoryList__Default {
+    color: $black-color;
+    font-weight: bold;
+    font-family: Roboto;
+    display: block;
+    padding: 5px 0px 5px 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.categoryList__After__Default {
+    content: '';
+    left: 0;
+    position: absolute;
+    text-decoration: none;
+    top: calc(100% + 10px);
+    width: 100%;
+}
+
+.categoryList__first__child {
+    border-bottom: 2.5px solid $gray-light-border;
+    padding-bottom: 20px;
+}
+
+.categoryList__icon {
+    background: $gray-light-dark;
+    border-radius: 50%;
+    color:  $white-color;
+    font-size: 19px;
+    margin-right: 20px;
+    padding: 12px;
+}
+
+.category__nav {
     padding-top: 50px;
     
     h4 {
         color: $gray-black-light;
-        padding: 1em;
+        font-family: Roboto;
+        padding-left: 20px;
     }
 }
 
-.Category__list {
-    color: black;
-    font-weight: bold;
-    font-family: Roboto;
-    display: block;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    text-decoration: none;
+.category__list {
+    @extend .categoryList__Default;
     
     &:after {
-        content: '';
-        left: 0;
-        position: absolute;
-        text-decoration: none;
-        top: calc(100% + 10px);
-        width: 100%;
-    }
-
-    &:first-child {
-        border-bottom: 2.5px solid $gray-light-border;
-        padding-bottom: 20px;
+        @extend .categoryList__After__Default;
     }
 
     i {
-        background: $gray-light-dark;
-        border-radius: 50%;
-        color:  $white-color;
-        font-size: 19px;
-        margin-right: 20px;
-        padding: 12px;
+        @extend .categoryList__icon;
     }
 
     &--active  {
         background: $gray-ligh-active;
-        color: $gray-black-dark-bold;
-        display: block;
-        font-weight: bold;
-        font-family: Roboto;
-        margin-bottom: 8px;
-        padding-left: 20px;
-        text-decoration: none;
+        @extend .categoryList__Default;
         
         &:after {
-            content: '';
-            left: 0;
-            position: absolute;
-            text-decoration: none;
-            top: calc(100% + 10px);
-            width: 100%;
-        }
-    
-        &:first-child {
-            border-bottom: 2.5px solid $gray-light-border;
-            padding-bottom: 20px;
+            @extend .categoryList__After__Default;
         }
     
         i {
-            background: $gray-light-dark;
-            border-radius: 50%;
-            color:  $white-color;
-            font-size: 18px;
-            padding: 12px;
-            margin-right: 20px;
+            @extend .categoryList__icon;
         }
     }
+}
+
+.category__firstSection{
+    border-bottom: 2px solid $gray-light-border;
+    margin-bottom: 8px;
 }

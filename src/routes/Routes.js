@@ -28,13 +28,13 @@ const App = () =>
 			<Router>
 				<main>
 					<Nav />
-					<section className={styles.Main__section}>
+					<section className={styles['mainSection']}>
 						<Switch>
-							<Route exact path="/home" component={Home} />
+							<Route exact path="/" component={Home} />
 							<Route exact path="/products" component={Products} />
 							<Route exact path="/products/:category" component={Products} />
 							<Route exact path="/clients" component={Clients} />
-							<Route exact path="/contact" component={Contact} />
+							<Route exact path="/contacts" component={Contact} />
 							<Route component={Error} />
 						</Switch>
 					</section>

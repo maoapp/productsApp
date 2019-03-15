@@ -89,6 +89,8 @@ class Products extends React.Component {
 		const isBottomOfScroll = this.getScrollBottom() && products.length > items;
         
 		if(isBottomOfScroll) {
+			console.log('entra aqui');
+
 			setTimeout(() => this.setState(prevstate => ({ items: prevstate.items + PAGINATION_NUMBER})), TIMEOUT_SCROLL); 
 		}
 	}
@@ -108,7 +110,7 @@ class Products extends React.Component {
 		window.scrollTo(0,0); 
 		this.setState({items: 10});
 	}
-  
+    
 	renderContent(activeCategory, categories, items, productsToShow, productList) {
 		const { displayList, searchValue } = this.state;
 		const { products } = this.props;
@@ -133,7 +135,7 @@ class Products extends React.Component {
 								</i>
 								<i
 									onClick={() => this.handleDisplayType(false)}
-									className={`${displayList && styles['products__viewControls__iconInactive']} material-icons`}
+									className={`${displayList && styles['products__viewControls--iconInactive']} material-icons`}
 								>
                                     view_module
 								</i>
@@ -149,18 +151,22 @@ class Products extends React.Component {
 							</div>
 						</div>
 						<div>
-							<p>
-                                Showing <strong>{productsToShow.length}</strong> products - hidden <strong>{totalProducts}</strong>
-							</p>
+							<span>Showing <strong>{productsToShow.length} </strong></span> 
+							{
+								products.length !== productsToShow.length && 
+                                    <span> 
+                                        products - Hidden <strong>{totalProducts}</strong>
+                                    </span>
+							}
 						</div>
 					</header>
 					<section className="md-grid">
 						{productList.slice(0, items)}
 					</section>
+					{this.getScrollBottom() && products.length > items && productsToShow.length > 10 && <div>
+						<CircularProgress style={{fill: 'red'}}id="circularProgressScroll" scale={1} />
+					</div>}
 				</main> : <EmptyState customMessage={messageEmptyStateCategories} state={ERROR_404}/>}
-				{this.getScrollBottom() && products.length > items && <div>
-					<CircularProgress id="circularProgressScroll" scale={2} />
-				</div>}
 			</section>
 		);
 	}
@@ -182,7 +188,7 @@ class Products extends React.Component {
       
 			if(searchValue) {
 				productsToShow = productsToShow.filter(product => product.name.toLowerCase().indexOf(
-					searchValue.toLowerCase()) !== -1);
+					searchValue.toLowerCase()) !== -1) || productsToShow;
 			}
 
 			productList = (
@@ -191,7 +197,9 @@ class Products extends React.Component {
       
 			content = this.renderContent(activeCategory, categories, items, productsToShow, productList);
 		} else {
-			content = isFetching ? <CircularProgress id="circularProgress" scale={2} /> : <Error/>;
+			content = isFetching ? <div className={styles['products--stateLoading']}>
+				<CircularProgress id="circularProgress" scale={5} />
+			</div> : <Error/>;
 		}
 
 		return content;

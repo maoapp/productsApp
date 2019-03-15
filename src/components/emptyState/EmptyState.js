@@ -1,5 +1,6 @@
 // @vendors
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // @styles
 import styles from './EmptyState.module.scss';
@@ -10,5 +11,14 @@ const EmptyState = ({state, customMessage}) => (
 		<p className={styles['emptyState__message']}>{customMessage}</p>
 	</div>
 );
+
+EmptyState.propTypes = { 
+	state: PropTypes.string,
+	customMessage: PropTypes.string.isRequired
+};
+
+EmptyState.defaultProps = {
+	state: ''
+};
 
 export default EmptyState;

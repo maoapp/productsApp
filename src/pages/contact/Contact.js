@@ -122,7 +122,7 @@ class Contact extends Component {
 						placeholder="Your email.."
 						required
 						type="email"
-						value={email}
+                        value={email}
 					/>
 					<TextField
 						className="md-cell--center md-cell--12"
@@ -157,5 +157,9 @@ class Contact extends Component {
 		return this.renderForm();
 	}
 }
+
+Contact.propTypes = {
+	postContactData: PropTypes.func
+};
 
 export default Contact;

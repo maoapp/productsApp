@@ -12,11 +12,11 @@ module.exports = {
 	GRID_ONE_COLUMN: '12',
 	GRID_TWO_COLUMNS: '6',
 	INPUT_ID_REACT_MD: 'floating-label-required-error-text-field',
-	INPUT_PLACEHOLDER_SEARCH: 'search',
+	INPUT_PLACEHOLDER_SEARCH: 'Search',
 	MAX_LENGTH_INPUT_DEFAULT: 255,
 	MAX_LENGTH_SUBJECT_FIELD: 500,
 	PAGINATION_NUMBER: 10,
-	TIMEOUT_SCROLL: 500,
+	TIMEOUT_SCROLL: 700,
 	VALIDATION_MESSAGE_INPUT_DEFAULT: 'Please write down your',
 	VALIDATION_MESSAGE_INPUT_EMAIL: 'Don’t forget to tell us what your email address is',
 	VALIDATION_MESSAGE_INPUT_SUBJECT: 'Don’t forget to write something to use!'
