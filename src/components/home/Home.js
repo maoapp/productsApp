@@ -1,6 +1,5 @@
 // @vendors
 import React from 'react';
-import { CircularProgress } from 'react-md';
 
 // @styles
 import styles from './Home.module.scss';

@@ -2,10 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "workspaces": ["workspace-a", "workspace-b"],
   "dependencies": {
     "axios": "^0.18.0",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "prop-types": "^15.7.2",
@@ -31,6 +30,11 @@
     "eject": "react-scripts eject",
     "start:server": "cd server && yarn start",
     "coverage": "react-scripts test --env=jsdom --coverage && open ./coverage/lcov-report/index.html"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
